@@ -1,0 +1,193 @@
+@charset 'utf-8';
+
+/* CSS Document */
+
+//SCSS全局变量
+// 默认移动端设计稿宽度
+$baseDevice: 640;
+// 前端切图移动端默认正常显示尺寸320
+$device: 320;
+// 默认html font-size
+$baseFontSize: 27px;
+// scss function
+@function calc-percent($target, $context) {
+    @return $target/$context * 100%;
+}
+@function px2rem($px, $base-font-size: $baseDevice / $device * $baseFontSize) {
+    @if (unitless($px)) {
+        @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+        @return px2rem($px + 0px); // That may fail.
+    } @else if (unit($px)==rem) {
+        @return $px;
+    }
+    @return ($px / $base-font-size) * 1rem;
+}
+//透明
+@mixin touming($o: 70) {
+    opacity: $o/100;
+    -webkit-opacity: $o/100;
+    filter: alpha(opacity=$o);
+}
+@mixin transition($time: .2s) {
+    -webkit-transition: $time ease all;
+    -moz-transition: $time ease all;
+    transition: $time ease all;
+}
+/* reset.css V1.6  Start*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+form,
+button,
+input,
+textarea,
+th,
+td {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i {
+    font: normal 12px "Helvetica Neue", "Microsoft YaHei", Helvetica, STHeiTi, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+a:hover {
+    text-decoration: none;
+}
+img {
+    vertical-align: top;
+    border: 0;
+}
+button,
+input,
+textarea {
+    font-size: 100%;
+    vertical-align: middle;
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+div,
+a {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.clearfix:before,.clearfix:after{ 
+    content:""; 
+    display:table; 
+} 
+.clearfix:after{clear:both;} 
+.clearfix{ 
+    *zoom:1;/*IE/7/6*/ 
+} 
+.wp{
+    width: 1210px;margin:0 auto;
+}
+.fl {
+    float:left
+}
+.fr {
+    float:right
+}
+.al {
+    text-align:left
+}
+.ac {
+    text-align:center
+}
+.ar {
+    text-align:right
+}
+.hide {
+    display:none
+}
+.checkBrowser {
+    font-size: 14px;
+    line-height: 40px;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 50%;
+    width: 700px;
+    height: 40px;
+    margin-left: -360px;
+    padding: 0 10px;
+    color: #FFF;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #E6212A;
+    a {
+        font-size: 16px;
+        line-height: 20px;
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        text-align: center;
+        color: #333;
+        border-radius: 50%;
+        background-color: #FFF;
+    }
+}
+/* reset.css V1.6  End */
+
+// page结构以及CSS样式
+// *******************
+// ********************
+// ********************
+// HTML结构
+// <div class="paged">
+//  <a href="#">首页</a>
+//  <a class="">上一页</a>
+//  <span class="current">1</span>
+//  <a href="#">2</a>
+//  <a class="" href="#">下一页</a>
+//  <a href="#">尾页</a>
+// </div>
+// ********************
+// ********************
+// ********************
+// CSS样式
+// .paged { padding-top: 30px; text-align: center; }
+// .paged a, .paged .p_info, .paged .current { display: inline-block; zoom: 1; *display:inline;
+// margin: 0px 3px; padding: 5px 10px; font-size: 12px; text-align: center; border: 1px solid #cfcfcf; background: #ffffff; color: #333; }
+// .paged .current, .paged a:hover { border: 1px solid #076da8; background: #147ab5; color: #fff; }
